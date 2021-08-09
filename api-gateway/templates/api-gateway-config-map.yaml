@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway
+data:
+  ORDER_SERVICE_URL: http://order-service.shop:8082/order
+  CUSTOMER_SERVICE_URL: http://customer-service.shop:8081/customer
