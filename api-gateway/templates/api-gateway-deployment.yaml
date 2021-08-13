@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: lkusmierczyk/api-gateway:1.0-snap
+          image: lkusmierczyk/api-gateway:1.1-snap
           ports:
           - containerPort: 8083
           envFrom:
