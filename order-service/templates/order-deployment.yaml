@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: lkusmierczyk/order-service:latest
+          image: lkusmierczyk/order-service:1.4-snap
           imagePullPolicy: Always
           ports:
           - containerPort: 8082
