@@ -59,7 +59,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: lkusmierczyk/order-service:1.9-snap
+          image: lkusmierczyk/order-service:1.10-snap
           imagePullPolicy: Always
           ports:
           - containerPort: 8082
