@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customer-deployment
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: customer-service
+      app: {{ .Release.Name }}-{{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: customer-service
+        app: {{ .Release.Name }}-{{ .Chart.Name }}
     spec:
       containers:
-        - name: customer-service
-          image: lkusmierczyk/customer-service:latest
-          imagePullPolicy: Always
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
           - containerPort: 8081
           env:
           - name: DB_URL
             valueFrom:
               secretKeyRef:
-                name: customer
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
                 key: DB_URL
           - name: DB_USER
             valueFrom:
               secretKeyRef:
-                name: customer
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
                 key: DB_USER
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: customer
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
                 key: DB_PASSWORD
