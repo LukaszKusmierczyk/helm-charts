@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  name: {{ include "customer.fullName" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-{{ .Chart.Name }}
+      app: {{ include "customer.fullName" . }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-{{ .Chart.Name }}
+        app: {{ include "customer.fullName" . }}
     spec:
       containers:
-        - name: {{ .Release.Name }}-{{ .Chart.Name }}
+        - name: {{ include "customer.fullName" . }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -22,15 +22,15 @@ spec:
           - name: DB_URL
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+                name: {{ include "customer.fullName" . }}-secret
                 key: DB_URL
           - name: DB_USER
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+                name: {{ include "customer.fullName" . }}-secret
                 key: DB_USER
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}-{{ .Chart.Name }}-secret
+                name: {{ include "customer.fullName" . }}-secret
                 key: DB_PASSWORD
