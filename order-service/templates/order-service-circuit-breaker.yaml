@@ -1,0 +1,13 @@
+kind: DestinationRule
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: order-service
+  namespace: shop
+spec:
+  host: order-service.shop.svc.cluster.local
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 2
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 10

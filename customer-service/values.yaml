@@ -10,6 +10,4 @@ service:
   port: 8081
 
 database:
-  url: amRiYzpwb3N0Z3Jlc3FsOi8vcG9zdGdzcWwtcG9zdGdyZXNxbC5zaG9wLnN2Yy5jbHVzdGVyLmxvY2FsOjU0MzIvZGJfY3VzdG9tZXI=
-  user: dV9jdXN0b21lcg==
-  password: Y3VzdG9tZXI=
+  url: jdbc:postgresql://tyke.db.elephantsql.com/anvesuul

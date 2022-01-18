@@ -24,17 +24,8 @@ spec:
           - containerPort: 8081
           env:
           - name: DB_URL
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "customer.fullName" . }}-secret
-                key: DB_URL
+            value: {{ .Values.database.url }}
           - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "customer.fullName" . }}-secret
-                key: DB_USER
+            value: {{ .Values.database.user }}
           - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "customer.fullName" . }}-secret
-                key: DB_PASSWORD
+            value: {{ .Values.database.password }}

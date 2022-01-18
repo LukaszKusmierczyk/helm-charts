@@ -3,4 +3,8 @@ image:
   tag: 31
 
 imagePullSecrets:
-  - name: artifactory-auth
+  - name: lkusmierczyk-artifactory-secret
+
+database:
+  user: {{ requiredEnv "ELEPHANTSQL_USER" }}
+  password: {{ requiredEnv "ELEPHANTSQL_PASSWORD" }}
